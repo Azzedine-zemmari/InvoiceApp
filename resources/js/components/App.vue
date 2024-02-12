@@ -1,5 +1,5 @@
 <template>
-<h1>this is first vue js</h1>
+<router-view/>
 </template>
 <script setup>
 
