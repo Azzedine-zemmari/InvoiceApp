@@ -9,7 +9,7 @@ let invoices = ref([])
 onMounted(() => {
   axios.get('/api/get_all_invoice')
     .then(response => {
-      console.log(response.data); // Log the data to the console
+      invoices.value = response.data.invoices 
     })
     .catch(error => {
       console.error('Error fetching users:', error);
@@ -75,13 +75,16 @@ onMounted(() => {
             </div>
 
             <!-- item 1 -->
-            <div class="table--items">
-                <a href="#" class="table--items--transactionId">#093654</a>
-                <p>Jan 18, 9:31am</p>
-                <p>#093654</p>
-                <p>Jonathan Yu</p>
-                <p>Jan 18, 9:31am</p>
-                <p> $ 16,943</p>
+            <div class="table--items" v-for="item in invoices" :key="item.id" v-if="invoices.length > 0">
+                <a href="#" class="table--items--transactionId">#{{ item.id }}</a>
+                <p>{{ item.date }}</p>
+                <p>#{{ item.number }}</p>
+                <p>{{ item.customer_id }}</p>
+                <p>{{ item.due_date }}</p>
+                <p> $ {{ item.total }}</p>
+            </div>
+            <div class="table--items" v-else>
+                <p>Invoice Not Found</p>
             </div>
         </div>
     </div>
