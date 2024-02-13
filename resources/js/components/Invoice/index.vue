@@ -9,6 +9,7 @@ let invoices = ref([])
 onMounted(() => {
   axios.get('/api/get_all_invoice')
     .then(response => {
+        console.log(response.data.invoices)
       invoices.value = response.data.invoices 
     })
     .catch(error => {
@@ -79,7 +80,8 @@ onMounted(() => {
                 <a href="#" class="table--items--transactionId">#{{ item.id }}</a>
                 <p>{{ item.date }}</p>
                 <p>#{{ item.number }}</p>
-                <p>{{ item.customer_id }}</p>
+                <p v-if="item.customer !== null">{{ item.customer.firstname }} {{ item.customer.lastname }}</p>
+                <p v-else>Customer Not Found</p>
                 <p>{{ item.due_date }}</p>
                 <p> $ {{ item.total }}</p>
             </div>
