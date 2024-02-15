@@ -1,6 +1,9 @@
 <script setup>
 import { onMounted , ref } from 'vue';
 import axios from 'axios';
+import { useRouter } from 'vue-router';
+
+const route = useRouter()
 let invoices = ref([])
 let searchInvoice = ref([])
 // const getInvoices = async () => {
@@ -16,7 +19,7 @@ onMounted(() => {
     .catch(error => {
       console.error('Error fetching users:', error);
     });
-    newInvoice()
+    // newInvoice()
 });
 const search = async()=>{
     let response = await axios.get('/api/search_invoice?s='+searchInvoice.value)
@@ -26,6 +29,7 @@ const search = async()=>{
 const newInvoice = async()=>{
     let form = await axios.get("/api/createInvoice");
     console.log('form',form.data)
+    route.push('/invoice/new')
 }
 </script>
 <template>
@@ -38,7 +42,7 @@ const newInvoice = async()=>{
                 <h2 class="invoice__title">Invoices</h2>
             </div>
             <div>
-                <a class="btn btn-secondary">
+                <a class="btn btn-secondary" @click="newInvoice">
                     New Invoice
                 </a>
             </div>
