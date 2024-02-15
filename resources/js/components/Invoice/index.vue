@@ -2,6 +2,7 @@
 import { onMounted , ref } from 'vue';
 import axios from 'axios';
 let invoices = ref([])
+let searchInvoice = ref([])
 // const getInvoices = async () => {
 //     let response = await axios.get("/api/get_all_invoice")
 //     console.log('response' , response)
@@ -15,7 +16,17 @@ onMounted(() => {
     .catch(error => {
       console.error('Error fetching users:', error);
     });
+    newInvoice()
 });
+const search = async()=>{
+    let response = await axios.get('/api/search_invoice?s='+searchInvoice.value)
+    console.log(response.data.invoice)
+    invoices.value = response.data.invoice
+}
+const newInvoice = async()=>{
+    let form = await axios.get("/api/createInvoice");
+    console.log('form',form.data)
+}
 </script>
 <template>
 
@@ -62,7 +73,7 @@ onMounted(() => {
                 </div>
                 <div class="relative">
                     <i class="table--search--input--icon fas fa-search "></i>
-                    <input class="table--search--input" type="text" placeholder="Search invoice">
+                    <input class="table--search--input" type="text" placeholder="Search invoice" v-model="searchInvoice" @keyup.enter="search">
                 </div>
             </div>
 
