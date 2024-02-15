@@ -16,6 +16,7 @@ onMounted( async ()=>{
 const getAllCustomers = async() => {
     let response = await axios.get('/api/customers')
     console.log('response',response)
+    allCustomers.value = response.data.customers
 }
 </script>
 <template>
@@ -111,10 +112,11 @@ const getAllCustomers = async() => {
             <div>
                 
             </div>
-            <div>
+            <div class="footerSave">
                 <a class="btn btn-secondary">
                     Save
                 </a>
+                <router-link class="btn btn-light btn__close--modal" to="/">Back home</router-link>
             </div>
         </div>
         
@@ -138,6 +140,8 @@ const getAllCustomers = async() => {
                 </button>
                 <button class="btn btn-light btn__close--modal ">Save</button>
             </div>
+            
+
         </div>
     </div>
 </div>
