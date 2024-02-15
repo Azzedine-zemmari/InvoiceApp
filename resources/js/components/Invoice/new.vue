@@ -1,3 +1,23 @@
+<script setup>
+import axios from 'axios';
+import {onMounted,ref} from 'vue'
+let form = ref([])
+let allCustomers = ref([])
+let customer_id = ref([])
+const indexForm = async()=>{
+    let response = await axios.get('/api/createInvoice')
+    // console.log('form',response.data)
+    form.value = response.data
+}
+onMounted( async ()=>{
+    indexForm()
+    getAllCustomers()
+})
+const getAllCustomers = async() => {
+    let response = await axios.get('/api/customers')
+    console.log('response',response)
+}
+</script>
 <template>
 <div class="container">
     <div class="invoices">

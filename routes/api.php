@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\CustomerController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -23,3 +24,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/get_all_invoice', [InvoiceController::class, 'index']);
 Route::get('/search_invoice', [InvoiceController::class, 'search_Invoice']);
 Route::get('/createInvoice', [InvoiceController::class, 'createInvoice']);
+Route::get('/customers', [CustomerController::class, 'getAllCustomers']);
