@@ -33,6 +33,7 @@ const addCart = (item)=>{
             quantity:item.quantity,  
         }
         listCart.value.push(itemCart)
+        closeModel()
 }
 const openModel =()=>{
 showModel.value = !showModel.value
@@ -44,6 +45,9 @@ const getProduct = async() =>{
     let response = await axios.get('/api/products')
     console.log('product',  response)
     productList.value= response.data.product
+}
+const removeItem = (i)=>{
+    listCart.value.splice(i, 1)
 }
 
 </script>
@@ -108,7 +112,7 @@ const getProduct = async() =>{
                         $ {{ itemCart.quantity * itemCart.unit_price }}
                     </p>
                     <p v-else></p>
-                    <p style="color: red; font-size: 24px;cursor: pointer;">
+                    <p style="color: red; font-size: 24px;cursor: pointer;" @click="removeItem()">
                         &times;
                     </p>
                 </div>
