@@ -13,10 +13,11 @@ const indexForm = async()=>{
     // console.log('form',response.data)
     form.value = response.data
 }
-onMounted( async ()=>{
-    indexForm()
-    getAllCustomers()
-})
+    onMounted( async ()=>{
+        indexForm()
+        getAllCustomers()
+        getProduct()
+    })
 const getAllCustomers = async() => {
     let response = await axios.get('/api/customers')
     console.log('response',response)
@@ -36,7 +37,11 @@ const openModel =()=>{
 showModel.value = !showModel.value
 }
 const closeModel = ()=>{
-    showModel   .value = !hiddeModel.value
+    showModel.value = !hiddeModel.value
+}
+const getProduct = async() =>{
+    let response = await axios.get('/api/products')
+    console.log('product',  response)
 }
 
 </script>
