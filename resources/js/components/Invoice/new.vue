@@ -56,6 +56,33 @@ const subTotal = () =>{
     })
     return total
 }
+const Total = ()=>{
+    return subTotal()-form.value.discount
+}
+const onSave = ()=>{
+    if(listCart.value.length>=1){
+        let subtotal = 0;
+        subtotal = subTotal()
+        let total = 0 
+        total = Total()
+
+        const formData = new FormData()
+        formData.append('invoice_item',stringify(listCart.value))
+        formData.append('customer_id',customer_id.value)
+        formData.append('date',form.value.date)
+        formData.append('due_date',form.value.due_date)
+        formData.append('number',form.value.number)
+        formData.append('reference',form.value.reference)
+        formData.append('discount',formData.value.discount)
+        formData.append('subtotal',formData.value.subtotal)
+        formData.append('total',formData.value.total)
+        formData.append('terms_and_conditions',formData.value.terms_and_conditions)
+        
+        axios.post("/api/add_invoice",formData)
+        listCart.value = []
+        router.push('/')
+    }
+}
 </script>
 <template>
 <div class="container">
@@ -88,7 +115,7 @@ const subTotal = () =>{
                     <input id="due_date" type="date" class="input" v-model="form.due_date">
                 </div>
                 <div>
-                    <p class="my-1">Numero</p> 
+                    <p class="my-1">Numero</p>  
                     <input type="text" class="input" v-model="form.number"> 
                     <p class="my-1">Reference(Optional)</p> 
                     <input type="text" class="input" v-model="form.reference">
@@ -143,7 +170,7 @@ const subTotal = () =>{
                     </div>
                     <div class="table__footer--total">
                         <p>Grand Total</p>
-                        <span>$ 1200</span>
+                        <span>$ {{ Total() }}</span>
                     </div>
                 </div>
             </div>
@@ -155,7 +182,7 @@ const subTotal = () =>{
                 
             </div>
             <div class="footerSave">
-                <a class="btn btn-secondary">
+                <a class="btn btn-secondary" @click="onSave()">
                     Save
                 </a>
                 <router-link class="btn btn-light btn__close--modal" to="/">Back home</router-link>
