@@ -11,7 +11,7 @@ let hiddeModel = ref(true)
 let productList = ref([])
 const indexForm = async()=>{
     let response = await axios.get('/api/createInvoice')
-    // console.log('form',response.data)
+    console.log('form',response.data)
     form.value = response.data
 }
     onMounted( async ()=>{
@@ -49,7 +49,13 @@ const getProduct = async() =>{
 const removeItem = (i)=>{
     listCart.value.splice(i, 1)
 }
-
+const subTotal = () =>{
+    let  total = 0
+    listCart.value.map(data=>{
+        total = total + (data.quantity*data.unit_price)
+    })
+    return total
+}
 </script>
 <template>
 <div class="container">
@@ -124,16 +130,16 @@ const removeItem = (i)=>{
             <div class="table__footer">
                 <div class="document-footer" >
                     <p>Terms and Conditions</p>
-                    <textarea cols="50" rows="7" class="textarea" ></textarea>
+                    <textarea cols="50" rows="7" class="textarea" v-model="form.terms_and_conditions"></textarea>
                 </div>
                 <div>
                     <div class="table__footer--subtotal">
                         <p>Sub Total</p>
-                        <span>$ 1000</span>
+                        <span>$ {{ subTotal() }}</span>
                     </div>
                     <div class="table__footer--discount">
                         <p>Discount</p>
-                        <input type="text" class="input">
+                        <input type="text" class="input" v-model="form.discount">
                     </div>
                     <div class="table__footer--total">
                         <p>Grand Total</p>
