@@ -51,7 +51,7 @@ class InvoiceController extends Controller
             'due_date'=> null,
             'reference'=> null,
             'discount'=>0,
-            'terms_and_conditions' => 'Default terms and condition',
+            'terms_and_condition' => 'Default terms and condition',
             'items'=>[
                 [
                     'product_id'=> null,
@@ -64,28 +64,42 @@ class InvoiceController extends Controller
         ];
         return response()->json($formData);
     }
-    public function add_invoice(Request $request){
-        $invoiceitem = $request->input('invoice_item');
+    public function addInvoices(Request $request)
+{
+    // Validate and sanitize data as needed
+    
+    $invoiceitem = $request->input('invoice_item');
 
-        $invoicedata['sub_total'] = $request->input('subtotal');
-        $invoicedata['total'] = $request->input('total');
-        $invoicedata['number'] = $request->input('number');
-        $invoicedata['date'] = $request->input('date');
-        $invoicedata['due_date'] = $request->input('due_date');
-        $invoicedata['discount'] = $request->input('discount');
-        $invoicedata['reference'] = $request->input('reference');
-        $invoicedata['terms_and_conditions'] = $request->input('terms_and_conditions');
+    $invoicedata = [
+        'number' => $request->input('number'),
+        'customer_id'=>$request->input('customer_id'),
+        'date' => $request->input('date'),
+        'due_date' => $request->input('due_date'),
+        'reference' => $request->input('reference'),
+        'terms_and_condition' => $request->input('terms_and_condition'),
+        'sub_total'=>$request->input('sub_total'),
+        'discount' => $request->input('discount'),
+        'total' => $request->input('total'),
+    ];
 
-        $invoice = Invoice::create($invoicedata);
+    // Create the invoice
+    $invoice = Invoice::create($invoicedata);
 
-        foreach(json_decode($invoiceitem) as $item){
-            $itemdata['product_id'] = $item->id;
-            $itemdata['product_id'] = $item->id;
-            $itemdata['quantity'] = $item->quantity;
-            $itemdata['unit_price'] = $item->unit_price;
-            
-            InvoiceItem::create($itemdata);
+    // Create invoice items
+    foreach (json_decode($invoiceitem) as $item) {
+        $itemdata = [
+            'invoice_id' => $invoice->id,
+            'product_id' => $item->id,
+            'unit_price' => $item->unit_price,
+            'quantity' => $item->quantity,
+        ];
 
-        }
+        // Create invoice item
+        InvoiceItem::create($itemdata);
     }
+
+    // Return success response
+    return response()->json(['message' => 'Invoice created successfully'], 201);
+}
+
 }

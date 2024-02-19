@@ -61,30 +61,41 @@ const subTotal = () =>{
 const Total = ()=>{
     return subTotal()-form.value.discount
 }
-const onSave = ()=>{
-    if(listCart.value.length>=1){
-        let subtotal = 0;
-        subtotal = subTotal()
-        let total = 0 
-        total = Total() 
+const onSave = async () => {
+    if (listCart.value.length >= 1) {
+        try {
+            let subtotal = subTotal();
+            let total = Total();
 
-        const formData = new FormData()
-        formData.append('invoice_item',JSON.stringify(listCart.value))
-        formData.append('customer_id',customer_id.value)
-        formData.append('date',form.value.date)
-        formData.append('due_date',form.value.due_date)
-        formData.append('number',form.value.number)
-        formData.append('reference',form.value.reference)
-        formData.append('discount',form.value.discount)
-        formData.append('subtotal',subtotal)
-        formData.append('total',total)
-        formData.append('terms_and_conditions',form.value.terms_and_conditions)
-        
-        axios.post("/api/add_invoice",formData)
-        listCart.value = []
-        router.push('/')
+            const formData = new FormData();
+            formData.append('invoice_item', JSON.stringify(listCart.value));
+            formData.append('number', form.value.number);
+            formData.append('customer_id', customer_id.value);
+            formData.append('date', form.value.date);
+            formData.append('due_date', form.value.due_date);
+            formData.append('reference', form.value.reference);
+            formData.append('terms_and_condition', form.value.terms_and_condition);
+            formData.append('sub_total', subtotal);
+            formData.append('discount', form.value.discount);
+            formData.append('total', total);
+
+            await axios.post("/api/add_invoice", formData);
+            listCart.value = [];
+            router.push('/');
+
+            // Confirmation message
+            alert('Invoice saved successfully.');
+        } catch (error) {
+            console.error('Error saving invoice:', error);
+            // Display an error message or handle the error as needed
+            alert('An error occurred while saving the invoice. Please try again.');
+        }
+    } else {
+        // Notify user if the cart is empty
+        alert('Cannot save invoice: Cart is empty.');
     }
-}
+};
+
 </script>
 <template>
 <div class="container">
