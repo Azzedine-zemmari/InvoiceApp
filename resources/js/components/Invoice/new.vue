@@ -1,6 +1,8 @@
 <script setup>
 import axios from 'axios';
 import {onMounted,ref} from 'vue'
+import { useRouter } from 'vue-router';
+const router = useRouter()
 let form = ref([])
 let allCustomers = ref([])
 let customer_id = ref([])
@@ -64,19 +66,19 @@ const onSave = ()=>{
         let subtotal = 0;
         subtotal = subTotal()
         let total = 0 
-        total = Total()
+        total = Total() 
 
         const formData = new FormData()
-        formData.append('invoice_item',stringify(listCart.value))
+        formData.append('invoice_item',JSON.stringify(listCart.value))
         formData.append('customer_id',customer_id.value)
         formData.append('date',form.value.date)
         formData.append('due_date',form.value.due_date)
         formData.append('number',form.value.number)
         formData.append('reference',form.value.reference)
-        formData.append('discount',formData.value.discount)
-        formData.append('subtotal',formData.value.subtotal)
-        formData.append('total',formData.value.total)
-        formData.append('terms_and_conditions',formData.value.terms_and_conditions)
+        formData.append('discount',form.value.discount)
+        formData.append('subtotal',subtotal)
+        formData.append('total',total)
+        formData.append('terms_and_conditions',form.value.terms_and_conditions)
         
         axios.post("/api/add_invoice",formData)
         listCart.value = []

@@ -78,7 +78,7 @@ class InvoiceController extends Controller
 
         $invoice = Invoice::create($invoicedata);
 
-        foreach(json_decode($invoiceitem)as $item){
+        foreach(json_decode($invoiceitem) as $item){
             $itemdata['product_id'] = $item->id;
             $itemdata['product_id'] = $item->id;
             $itemdata['quantity'] = $item->quantity;
