@@ -1,6 +1,7 @@
 <script setup>
 import axios from 'axios';
 import { onMounted,ref } from 'vue';
+import router from '../../router';
 let form = ref({id:''})
 const props = defineProps({
     id:{
@@ -16,6 +17,13 @@ const getInvoice = async () =>{
 onMounted( async ()=>{
         getInvoice()
     })
+const print = ()=>{
+    window.print()
+    router.push('/').catch(() => {})
+}
+const onEdit = (id)=>{
+    router.push('/invoice/edit/'+id)
+}
 </script>
 <template>
 <div class="container">
@@ -39,7 +47,7 @@ onMounted( async ()=>{
                 <ul  class="card__header-list">
                     <li>
                         <!-- Select Btn Option -->
-                        <button class="selectBtnFlat">
+                        <button class="selectBtnFlat" @click="print()">
                             <i class="fas fa-print"></i>
                             Print
                         </button>
@@ -47,7 +55,7 @@ onMounted( async ()=>{
                     </li>
                     <li>
                         <!-- Select Btn Option -->
-                        <button class="selectBtnFlat">
+                        <button class="selectBtnFlat" @click="onEdit(form.id)">
                             <i class=" fas fa-reply"></i>
                             Edit
                         </button>
@@ -150,24 +158,14 @@ onMounted( async ()=>{
                     <div class="grand__total" >
                         <div class="grand__total--items">
                             <p>Grand Total</p>
-                            <span>$ {{ form.sub_total - form.discount }}</span>
+                            <span>$ {{ form.total }}</span>
                         </div>
                     </div>
                 </div>
             </div>
 
         </div>
-        <div class="card__footer">
-            <div>
-                
-            </div>
-            <div>
-                <a class="btn btn-secondary">
-                    Save
-                </a>
-            </div>
-        </div>
-        
     </div>
+    <br>
 </div>
 </template>

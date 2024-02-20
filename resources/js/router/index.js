@@ -4,6 +4,7 @@ import Invoice from '../components/Invoice/index.vue';
 import NotFound from '../components/NotFound.vue';
 import NewInvoice from '../components/Invoice/new.vue';
 import show from '../components/Invoice/show.vue';
+import edit from '../components/Invoice/edit.vue';
 
 const routes = [
     {
@@ -22,6 +23,10 @@ const routes = [
         path:'/invoice/showInvoice/:id',
         component:show,
         props: true
+    },
+    {
+        path:'/invoice/edit/:id',
+        component:edit
     }
 ];
 const router = createRouter({
