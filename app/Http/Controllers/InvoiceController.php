@@ -102,4 +102,12 @@ class InvoiceController extends Controller
     return response()->json(['message' => 'Invoice created successfully'], 201);
 }
 
+public function showInvoice($id){
+    //customer and invoice_items are a functions in invoice model
+    //the invoice_items here give us the invoice item and in the invoice item there is product id using .product we can add the all the information about the product using the product_id
+    $invoice = Invoice::with(['customer','invoice_items.product'])->find($id);
+    return response()->json([
+        'invoice'=>$invoice
+    ],200);
+}
 }

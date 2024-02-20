@@ -12,7 +12,7 @@
 
         <!-- Styles -->
         
-        @vite('resources/css/app.css')
+        @vite('resources/assets/css/app.css')
     </head>
     <body>
         <div id="app"></div>

@@ -20,7 +20,8 @@ const routes = [
     },
     {
         path:'/invoice/showInvoice/:id',
-        component:show
+        component:show,
+        props: true
     }
 ];
 const router = createRouter({
