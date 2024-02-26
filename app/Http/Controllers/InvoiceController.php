@@ -124,7 +124,7 @@ public function updateInvoice(Request $request,$id){
     $invoice = Invoice::where('id',$id)->first();
 
     
-    $invoice->sub_total = $request->sub_total;
+    $invoice->sub_total = $request->subtotal;
     $invoice->total = $request->total;
     $invoice->customer_id = $request->customer_id;
     $invoice->number = $request->number;
@@ -135,14 +135,14 @@ public function updateInvoice(Request $request,$id){
     $invoice->terms_and_condition = $request->terms_and_condition;
 
     $invoice->update($request->all());
-    $invoiceitem = $request->input('invoice_items');
+    $invoiceitem = $request->input('invoice_item');
 
-    $invoice->$invoice_items()->delete;
+    $invoice->invoice_items()->delete();
 
     foreach (json_decode($invoiceitem) as $item) {
         $itemdata = [
-            'invoice_id' => $invoice->product_id,
-            'product_id' => $item->id,
+            'invoice_id' => $invoice->id,
+            'product_id' => $item->product_id,
             'unit_price' => $item->unit_price,
             'quantity' => $item->quantity,
         ];

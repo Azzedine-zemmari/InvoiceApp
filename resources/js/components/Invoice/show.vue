@@ -24,6 +24,7 @@ const print = ()=>{
 const onEdit = (id)=>{
     router.push('/invoice/edit/'+id)
 }
+
 </script>
 <template>
 <div class="container">
