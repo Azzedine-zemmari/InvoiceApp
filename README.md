@@ -1,66 +1,37 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h1>Invoice Management App</h1>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<p>This project is an Invoice Management Application built using Vue.js for the front end and Laravel for the back end. It provides functionalities to manage invoices, invoice items, customers, and users.</p>
 
-## About Laravel
+<h2>Features</h2>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<ul>
+  <li><strong>Invoice Management</strong>: Create, update, delete invoices.</li>
+  <li><strong>Invoice Items</strong>: Add invoice items with quantity and calculate subtotal.</li>
+  <li><strong>Customers</strong>: Manage customer information associated with invoices.</li>
+  <li><strong>Discounts</strong>: Apply discounts to invoices and calculate grand total.</li>
+  <li><strong>Print Invoice</strong>: Print invoices with a professional layout.</li>
+</ul>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<h2>Screenshots</h2>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<p>Below are some screenshots demonstrating the user interface and functionality of the Invoice Management Application:</p>
 
-## Learning Laravel
+<ul>
+  <li><strong>All Invoices</strong>: <img src="![Screenshot 2024-02-26 185517](https://github.com/Azzedine-zemmari/InvoiceApp/assets/98091150/6446f119-f83e-48e7-a3de-d95586bc23df)" alt="Add New Invoice"></li>
+  <li><strong>New Invoice</strong>: <img src="![Screenshot 2024-02-26 185644](https://github.com/Azzedine-zemmari/InvoiceApp/assets/98091150/2e430ada-e84b-4929-a37e-15151e089682)" alt="new Invoice"></li>
+  <li><strong>Edit Invoice</strong>: <img src="![Screenshot 2024-02-26 190102](https://github.com/Azzedine-zemmari/InvoiceApp/assets/98091150/5995631e-c2ae-43e2-aa40-65f9fb4887ae)
+" alt="Invoice Edit"></li>
+  <li><strong>Print Invoice</strong>: <img src="![Screenshot 2024-02-26 190031](https://github.com/Azzedine-zemmari/InvoiceApp/assets/98091150/08015a49-8e9c-41a3-91ee-68d699167939)" alt="print"></li>
+</ul>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<h2>Contributing</h2>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+<p>Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue on GitHub.</p>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<h2>License</h2>
 
-## Laravel Sponsors
+<p>This project is licensed under the <a href="LICENSE">MIT License</a>.</p>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<p> This vedeo inspired me and helped me to complete the invoice project</p>
+<a href="https://www.youtube.com/watch?v=_MZ1B5F2PFc&list=PLaXLjtW0Px1r6M2ODEz2Mcj3MPwSViUYT&index=10">Invoice project</a>
