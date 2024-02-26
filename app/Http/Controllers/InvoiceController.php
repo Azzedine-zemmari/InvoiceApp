@@ -152,4 +152,9 @@ public function updateInvoice(Request $request,$id){
     }
 
 }
+public function deleteInvoice($id){
+    $invoice = Invoice::findOrFail($id);
+    $invoice->invoice_items()->delete();
+    $invoice->delete();
+}
 }

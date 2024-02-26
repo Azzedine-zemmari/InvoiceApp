@@ -24,7 +24,10 @@ const print = ()=>{
 const onEdit = (id)=>{
     router.push('/invoice/edit/'+id)
 }
-
+const onDelete = (id)=>{
+    axios.get('/api/delete_invoice/'+id);
+    router.push('/')
+}
 </script>
 <template>
 <div class="container">
@@ -64,7 +67,7 @@ const onEdit = (id)=>{
                     </li>
                     <li>
                         <!-- Select Btn Option -->
-                        <button class="selectBtnFlat ">
+                        <button class="selectBtnFlat " @click="onDelete(form.id)">
                             <i class=" fas fa-pencil-alt"></i>
                             Delete
                         </button>
