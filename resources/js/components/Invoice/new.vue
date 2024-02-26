@@ -45,7 +45,7 @@ const closeModel = ()=>{
 }
 const getProduct = async() =>{
     let response = await axios.get('/api/products')
-    console.log('product',  response)
+    //console.log('product',  response)
     productList.value= response.data.product
 }
 const removeItem = (i)=>{

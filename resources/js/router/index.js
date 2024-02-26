@@ -26,7 +26,8 @@ const routes = [
     },
     {
         path:'/invoice/edit/:id',
-        component:edit
+        component:edit,
+        props: true
     }
 ];
 const router = createRouter({
