@@ -19,8 +19,7 @@
 <ul>
   <li><strong>All Invoices</strong>: <img src="https://github.com/Azzedine-zemmari/InvoiceApp/assets/98091150/6446f119-f83e-48e7-a3de-d95586bc23df" alt="Add New Invoice"></li>
   <li><strong>New Invoice</strong>: <img src="https://github.com/Azzedine-zemmari/InvoiceApp/assets/98091150/2e430ada-e84b-4929-a37e-15151e089682" alt="new Invoice"></li>
-  <li><strong>Edit Invoice</strong>: <img src="https://github.com/Azzedine-zemmari/InvoiceApp/assets/98091150/5995631e-c2ae-43e2-aa40-65f9fb4887ae
-" alt="Invoice Edit"></li>
+  <li><strong>Edit Invoice</strong>: <img src="https://github.com/Azzedine-zemmari/InvoiceApp/assets/98091150/5995631e-c2ae-43e2-aa40-65f9fb4887ae" alt="Invoice Edit"></li>
   <li><strong>Print Invoice</strong>: <img src="https://github.com/Azzedine-zemmari/InvoiceApp/assets/98091150/08015a49-8e9c-41a3-91ee-68d699167939" alt="print"></li>
 </ul>
 
